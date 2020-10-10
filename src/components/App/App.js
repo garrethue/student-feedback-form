@@ -3,15 +3,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import customTheme from "../theme";
-
-// function App({ children }) {
-//   return (
-//     <ThemeProvider theme={customTheme}>
-//       <CSSReset />
-//       {children}
-//     </ThemeProvider>
-//   );
-// }
+import Header from "../Header/Header";
+import Feeling from "../Prompts/Feeling";
+import Comments from "../Prompts/Comments";
 
 class App extends Component {
   render() {
@@ -20,12 +14,10 @@ class App extends Component {
         <ColorModeProvider>
           <CSSReset />
           <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Feedback!</h1>
-              <h4>
-                <i>Don't forget it!</i>
-              </h4>
-            </header>
+            <Header />
+            <Feeling />
+            <Comments />
+
             <br />
           </div>
         </ColorModeProvider>
