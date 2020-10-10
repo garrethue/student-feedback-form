@@ -4,7 +4,6 @@ const pool = require("../modules/pool");
 
 //POST
 router.post("/add-feedback", async (req, res) => {
-  console.log("in POST!!");
   try {
     const { feeling, understanding, supported, comments } = req.body;
     const addFeedback = await pool.query(

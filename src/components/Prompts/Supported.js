@@ -15,6 +15,20 @@ import { withRouter } from "react-router-dom";
 
 function Supported(props) {
   const [supportedValue, setSupportedValue] = useState(1);
+  const [isDisabledValue, setIsDisabled] = useState(false);
+
+  const handleChange = (value) => {
+    //if value is out of bounds, disable the next button and set the value to the invalid number
+    if (value > 5 || value < 1) {
+      setIsDisabled(true);
+      setSupportedValue(value);
+    } else {
+      //else if within range, let user move onto next page
+      setIsDisabled(false);
+      setSupportedValue(value);
+    }
+  };
+
   const addSupportedAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_SUPPORTED", payload: supportedValue });
     props.history.push("/comments");
@@ -44,7 +58,7 @@ function Supported(props) {
             value={supportedValue}
             min={1}
             max={5}
-            onChange={(value) => setSupportedValue(value)}
+            onChange={(value) => handleChange(value)}
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -53,7 +67,12 @@ function Supported(props) {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button onClick={addSupportedAndGoToNextPage} marginTop={3} w="25%">
+          <Button
+            isDisabled={isDisabledValue}
+            onClick={addSupportedAndGoToNextPage}
+            marginTop={3}
+            w="25%"
+          >
             Next
           </Button>
         </Grid>

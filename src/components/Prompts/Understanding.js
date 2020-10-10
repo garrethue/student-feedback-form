@@ -15,6 +15,20 @@ import { withRouter } from "react-router-dom";
 
 function Understanding(props) {
   const [understandingValue, setUnderstandingValue] = useState(1);
+  const [isDisabledValue, setIsDisabled] = useState(false);
+
+  const handleChange = (value) => {
+    //if value is out of bounds, disable the next button and set the value to the invalid number
+    if (value > 5 || value < 1) {
+      setIsDisabled(true);
+      setUnderstandingValue(value);
+    } else {
+      //else if within range, let user move onto next page
+      setIsDisabled(false);
+      setUnderstandingValue(value);
+    }
+  };
+
   const addUnderstandingAndGoToNextPage = () => {
     props.dispatch({
       type: "UPDATE_UNDERSTANDING",
@@ -47,7 +61,7 @@ function Understanding(props) {
             value={understandingValue}
             min={1}
             max={5}
-            onChange={(value) => setUnderstandingValue(value)}
+            onChange={(value) => handleChange(value)}
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -57,6 +71,7 @@ function Understanding(props) {
           </NumberInput>
 
           <Button
+            isDisabled={isDisabledValue}
             onClick={addUnderstandingAndGoToNextPage}
             marginTop={3}
             w="25%"
