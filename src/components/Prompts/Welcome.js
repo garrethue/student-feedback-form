@@ -24,7 +24,7 @@ function Welcome(props) {
           </Text>
         </Box>
         <Button onClick={nextPage} w="25%">
-          Let's Get Started
+          Let's Get Started!
         </Button>
       </Grid>
     </div>
