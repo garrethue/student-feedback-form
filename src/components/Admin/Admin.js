@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Admin.css";
-import { Grid, Box, IconButton } from "@chakra-ui/core";
+import { Grid, Box, IconButton, Text } from "@chakra-ui/core";
 import axios from "axios";
 
 export default function Admin() {
@@ -25,6 +25,19 @@ export default function Admin() {
   return (
     <div>
       <Grid justifyContent="center" alignItems="center" bg="transparent">
+        <Box
+          marginBottom={3}
+          marginTop={3}
+          rounded={3}
+          paddingLeft={2}
+          paddingRight={2}
+          w="100%"
+          bg="blue.500"
+        >
+          <Text fontWeight="bold" fontSize="50px">
+            All Submitted Feedback:
+          </Text>
+        </Box>
         <Box marginTop={3} marginBottom={3} rounded={3} w="100%" bg="blue.500">
           <table>
             <tr>
