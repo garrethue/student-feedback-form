@@ -15,6 +15,7 @@ import Understanding from "../Prompts/Understanding";
 import Supported from "../Prompts/Supported";
 import Review from "../Prompts/Review";
 import Welcome from "../Prompts/Welcome";
+import Admin from "../Admin/Admin";
 
 //wrap ThemeProvider to execute my customTheme
 class App extends Component {
@@ -25,11 +26,7 @@ class App extends Component {
           <CSSReset /> {/*remove browser default CSS*/}
           <div className="App">
             <Header />
-            {/* <Feeling />
-            <Understanding />
-            <Supported />
-            <Comments />
-            <Review /> */}
+            <Admin />
           </div>
           <Router>
             <Switch>
