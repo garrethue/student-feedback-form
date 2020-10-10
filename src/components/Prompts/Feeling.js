@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -10,8 +10,14 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/core";
+import { connect } from "react-redux";
 
-export default function Feeling() {
+function Feeling(props) {
+  const [feelingValue, setFeelingValue] = useState(1);
+  const addFeelings = () => {
+    props.dispatch({ type: "UPDATE_FEELINGS", payload: feelingValue });
+  };
+
   //use GRID for layout design!
   return (
     <>
@@ -30,7 +36,14 @@ export default function Feeling() {
               How are you feeling today?
             </Text>
           </Box>
-          <NumberInput w="50%" defaultValue={1} min={1} max={5}>
+          <NumberInput
+            w="50%"
+            defaultValue={1}
+            value={feelingValue}
+            min={1}
+            max={5}
+            onChange={(value) => setFeelingValue(value)}
+          >
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -38,7 +51,7 @@ export default function Feeling() {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button marginTop={3} w="25%">
+          <Button onClick={addFeelings} marginTop={3} w="25%">
             Next
           </Button>
         </Grid>
@@ -46,3 +59,5 @@ export default function Feeling() {
     </>
   );
 }
+
+export default connect()(Feeling);

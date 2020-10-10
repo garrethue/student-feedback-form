@@ -7,19 +7,32 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { logger } from "redux-logger";
 
+//TODO: modify reducers with action types to record state
 const feelingReducer = (state = 0, action) => {
+  if (action.type === "UPDATE_FEELINGS") {
+    return action.payload;
+  }
   return state;
 };
 
 const understandingReducer = (state = 0, action) => {
+  if (action.type === "UPDATE_UNDERSTANDING") {
+    return action.payload;
+  }
   return state;
 };
 
 const supportedReducer = (state = 0, action) => {
+  if (action.type === "UPDATE_SUPPORTED") {
+    return action.payload;
+  }
   return state;
 };
 
 const commentsReducer = (state = "", action) => {
+  if (action.type === "UPDATE_COMMENTS") {
+    return action.payload;
+  }
   return state;
 };
 

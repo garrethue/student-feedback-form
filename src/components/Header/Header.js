@@ -49,7 +49,7 @@ const Header = (props) => {
         mt={{ base: 4, md: 0 }}
       >
         <Button onClick={toggleColorMode} bg="transparent" border="1px">
-          Toggle {colorMode === "light" ? "Dark" : "Light"}
+          {colorMode === "light" ? "Dark mode" : "Light mode"}
         </Button>
       </Box>
     </Flex>
