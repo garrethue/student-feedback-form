@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -10,10 +10,15 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/core";
+import { connect } from "react-redux";
 
-export default function Understanding() {
+function Supported(props) {
+  const [supportedValue, setSupportedValue] = useState(1);
+  const addSupported = () => {
+    props.dispatch({ type: "UPDATE_SUPPORTED", payload: supportedValue });
+  };
+
   //use GRID for layout design!
-  //use style props to customize CSS
   return (
     <>
       <div>
@@ -31,7 +36,14 @@ export default function Understanding() {
               How well are you being supported?
             </Text>
           </Box>
-          <NumberInput w="50%" defaultValue={1} min={1} max={5}>
+          <NumberInput
+            w="50%"
+            defaultValue={1}
+            value={supportedValue}
+            min={1}
+            max={5}
+            onChange={(value) => setSupportedValue(value)}
+          >
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -39,7 +51,7 @@ export default function Understanding() {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button marginTop={3} w="25%">
+          <Button onClick={addSupported} marginTop={3} w="25%">
             Next
           </Button>
         </Grid>
@@ -47,3 +59,5 @@ export default function Understanding() {
     </>
   );
 }
+
+export default connect()(Supported);

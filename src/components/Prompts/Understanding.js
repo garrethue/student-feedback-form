@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -10,10 +10,18 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/core";
+import { connect } from "react-redux";
 
-export default function Understanding() {
+function Understanding(props) {
+  const [understandingValue, setUnderstandingValue] = useState(1);
+  const addUnderstanding = () => {
+    props.dispatch({
+      type: "UPDATE_UNDERSTANDING",
+      payload: understandingValue,
+    });
+  };
+
   //use GRID for layout design!
-  //use style props to customize CSS
   return (
     <>
       <div>
@@ -31,7 +39,14 @@ export default function Understanding() {
               How well are you understanding the content?
             </Text>
           </Box>
-          <NumberInput w="50%" defaultValue={1} min={1} max={5}>
+          <NumberInput
+            w="50%"
+            defaultValue={1}
+            value={understandingValue}
+            min={1}
+            max={5}
+            onChange={(value) => setUnderstandingValue(value)}
+          >
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -39,7 +54,7 @@ export default function Understanding() {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button marginTop={3} w="25%">
+          <Button onClick={addUnderstanding} marginTop={3} w="25%">
             Next
           </Button>
         </Grid>
@@ -47,3 +62,5 @@ export default function Understanding() {
     </>
   );
 }
+
+export default connect()(Understanding);
