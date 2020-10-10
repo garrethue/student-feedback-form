@@ -27,7 +27,7 @@ function Review(props) {
             isClosable: true,
           });
           props.dispatch({ type: "RESET_STORE" }); //reset store to original default values
-          setTimeout(props.history.push("/"), 5500); //go to welcome page
+          setTimeout(() => props.history.push("/"), 5500); //go to welcome page
         }
       )
       .catch((err) => console.log(err));
