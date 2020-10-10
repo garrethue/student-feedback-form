@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, Input, Text, Button } from "@chakra-ui/core";
+import { connect } from "react-redux";
 
-export default function Feel() {
+function Comments(props) {
+  const [commentValue, setCommentValue] = useState("");
+  const addComment = () => {
+    props.dispatch({ type: "UPDATE_COMMENTS", payload: commentValue });
+    setCommentValue("");
+  };
+
   //use GRID for layout!
   return (
     <div>
@@ -19,11 +26,17 @@ export default function Feel() {
             Are there any comments you want to leave?
           </Text>
         </Box>
-        <Input variant="flushed" placeholder="Leave a comment!" />
-        <Button marginTop={8} w="25%">
+        <Input
+          value={commentValue}
+          onChange={(event) => setCommentValue(event.target.value)}
+          variant="flushed"
+          placeholder="Leave a comment!"
+        />
+        <Button onClick={addComment} marginTop={8} w="25%">
           Next
         </Button>
       </Grid>
     </div>
   );
 }
+export default connect()(Comments);
