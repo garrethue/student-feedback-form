@@ -18,13 +18,12 @@ function Feeling(props) {
   const [isDisabledValue, setIsDisabled] = useState(false);
 
   const handleChange = (value) => {
-    if (value > 5 || value < 0) {
-      setIsDisabled(true);
-      setFeelingValue(value);
-    } else if (value === 0) {
+    //if value is out of bounds, disable the next button and set the value to the invalid number
+    if (value > 5 || value < 1) {
       setIsDisabled(true);
       setFeelingValue(value);
     } else {
+      //else if within range, let user move onto next page
       setIsDisabled(false);
       setFeelingValue(value);
     }
