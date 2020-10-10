@@ -11,11 +11,14 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/core";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function Feeling(props) {
   const [feelingValue, setFeelingValue] = useState(1);
-  const addFeelings = () => {
+  const addFeelingsAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_FEELINGS", payload: feelingValue });
+
+    props.history.push("/understanding");
   };
 
   //use GRID for layout design!
@@ -51,7 +54,7 @@ function Feeling(props) {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button onClick={addFeelings} marginTop={3} w="25%">
+          <Button onClick={addFeelingsAndGoToNextPage} marginTop={3} w="25%">
             Next
           </Button>
         </Grid>
@@ -60,4 +63,4 @@ function Feeling(props) {
   );
 }
 
-export default connect()(Feeling);
+export default connect()(withRouter(Feeling));

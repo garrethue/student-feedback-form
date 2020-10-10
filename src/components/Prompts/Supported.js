@@ -11,11 +11,13 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/core";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function Supported(props) {
   const [supportedValue, setSupportedValue] = useState(1);
-  const addSupported = () => {
+  const addSupportedAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_SUPPORTED", payload: supportedValue });
+    props.history.push("/comments");
   };
 
   //use GRID for layout design!
@@ -51,7 +53,7 @@ function Supported(props) {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button onClick={addSupported} marginTop={3} w="25%">
+          <Button onClick={addSupportedAndGoToNextPage} marginTop={3} w="25%">
             Next
           </Button>
         </Grid>
@@ -60,4 +62,4 @@ function Supported(props) {
   );
 }
 
-export default connect()(Supported);
+export default connect()(withRouter(Supported));

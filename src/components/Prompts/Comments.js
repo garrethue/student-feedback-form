@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Box, Grid, Input, Text, Button } from "@chakra-ui/core";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function Comments(props) {
   const [commentValue, setCommentValue] = useState("");
-  const addComment = () => {
+  const addCommentAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_COMMENTS", payload: commentValue });
     setCommentValue("");
+    props.history.push("/review");
   };
 
   //use GRID for layout!
@@ -32,11 +34,11 @@ function Comments(props) {
           variant="flushed"
           placeholder="Leave a comment!"
         />
-        <Button onClick={addComment} marginTop={8} w="25%">
+        <Button onClick={addCommentAndGoToNextPage} marginTop={8} w="25%">
           Next
         </Button>
       </Grid>
     </div>
   );
 }
-export default connect()(Comments);
+export default connect()(withRouter(Comments));

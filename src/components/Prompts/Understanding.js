@@ -11,14 +11,16 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/core";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function Understanding(props) {
   const [understandingValue, setUnderstandingValue] = useState(1);
-  const addUnderstanding = () => {
+  const addUnderstandingAndGoToNextPage = () => {
     props.dispatch({
       type: "UPDATE_UNDERSTANDING",
       payload: understandingValue,
     });
+    props.history.push("/supported");
   };
 
   //use GRID for layout design!
@@ -54,7 +56,11 @@ function Understanding(props) {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button onClick={addUnderstanding} marginTop={3} w="25%">
+          <Button
+            onClick={addUnderstandingAndGoToNextPage}
+            marginTop={3}
+            w="25%"
+          >
             Next
           </Button>
         </Grid>
@@ -63,4 +69,4 @@ function Understanding(props) {
   );
 }
 
-export default connect()(Understanding);
+export default connect()(withRouter(Understanding));

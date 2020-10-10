@@ -2,6 +2,7 @@ import React from "react";
 import { useToast, Button, Grid, Text, Box } from "@chakra-ui/core";
 import { connect } from "react-redux";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 function Review(props) {
   const toast = useToast(); //upon submission a little window pops up to signal success
@@ -26,6 +27,7 @@ function Review(props) {
             isClosable: true,
           });
           props.dispatch({ type: "RESET_STORE" }); //reset store to original default values
+          setTimeout(props.history.push("/"), 5500); //go to welcome page
         }
       )
       .catch((err) => console.log(err));
@@ -37,6 +39,7 @@ function Review(props) {
         <Box
           marginBottom={3}
           rounded={3}
+          marginTop={3}
           paddingLeft={2}
           paddingRight={2}
           w="100%"
@@ -80,4 +83,4 @@ function Review(props) {
 //bring in the store
 const mapStoreToProps = (store) => ({ store });
 
-export default connect(mapStoreToProps)(Review);
+export default connect(mapStoreToProps)(withRouter(Review));

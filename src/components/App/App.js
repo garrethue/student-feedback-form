@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-// import "./App.css";
+
+//bring in router
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 //chakra ui
 import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
@@ -12,6 +14,7 @@ import Comments from "../Prompts/Comments";
 import Understanding from "../Prompts/Understanding";
 import Supported from "../Prompts/Supported";
 import Review from "../Prompts/Review";
+import Welcome from "../Prompts/Welcome";
 
 //wrap ThemeProvider to execute my customTheme
 class App extends Component {
@@ -22,12 +25,23 @@ class App extends Component {
           <CSSReset /> {/*remove browser default CSS*/}
           <div className="App">
             <Header />
-            <Feeling />
+            {/* <Feeling />
             <Understanding />
             <Supported />
             <Comments />
-            <Review />
+            <Review /> */}
           </div>
+          <Router>
+            <Switch>
+              {/* NEED A WELCOME PAGE????*/}
+              <Route exact path="/" component={Welcome} />
+              <Route path="/feeling" component={Feeling} />
+              <Route path="/understanding" component={Understanding} />
+              <Route path="/supported" component={Supported} />
+              <Route path="/comments" component={Comments} />
+              <Route path="/review" component={Review} />
+            </Switch>
+          </Router>
         </ColorModeProvider>
       </ThemeProvider>
     );
