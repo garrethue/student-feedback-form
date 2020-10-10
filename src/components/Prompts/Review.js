@@ -23,11 +23,11 @@ function Review(props) {
             description:
               "We have received your feedback. Thank you! In a few seconds, you will be re-directed.",
             status: "success",
-            duration: 5000,
-            isClosable: true,
+            duration: 4000, //pop up lasts for 4 sec
+            isClosable: false,
           });
           props.dispatch({ type: "RESET_STORE" }); //reset store to original default values
-          setTimeout(() => props.history.push("/"), 5500); //go to welcome page
+          setTimeout(() => props.history.push("/"), 5000); //go to welcome page after 5 sec
         }
       )
       .catch((err) => console.log(err));

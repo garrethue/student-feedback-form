@@ -15,9 +15,23 @@ import { withRouter } from "react-router-dom";
 
 function Feeling(props) {
   const [feelingValue, setFeelingValue] = useState(1);
+  const [isDisabledValue, setIsDisabled] = useState(false);
+
+  const handleChange = (value) => {
+    if (value > 5 || value < 0) {
+      setIsDisabled(true);
+      setFeelingValue(value);
+    } else if (value === 0) {
+      setIsDisabled(true);
+      setFeelingValue(value);
+    } else {
+      setIsDisabled(false);
+      setFeelingValue(value);
+    }
+  };
+
   const addFeelingsAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_FEELINGS", payload: feelingValue });
-
     props.history.push("/understanding");
   };
 
@@ -45,7 +59,7 @@ function Feeling(props) {
             value={feelingValue}
             min={1}
             max={5}
-            onChange={(value) => setFeelingValue(value)}
+            onChange={(value) => handleChange(value)}
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -54,7 +68,12 @@ function Feeling(props) {
             </NumberInputStepper>
           </NumberInput>
 
-          <Button onClick={addFeelingsAndGoToNextPage} marginTop={3} w="25%">
+          <Button
+            isDisabled={isDisabledValue}
+            onClick={addFeelingsAndGoToNextPage}
+            marginTop={3}
+            w="25%"
+          >
             Next
           </Button>
         </Grid>
