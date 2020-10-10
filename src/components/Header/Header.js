@@ -2,10 +2,12 @@ import React from "react";
 import { Box, Heading, Flex, useColorMode, Button } from "@chakra-ui/core";
 
 const Header = (props) => {
+  // useColorMode to bring in Darkmode feature
   const { colorMode, toggleColorMode } = useColorMode();
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
+  //Use Flex for responsive design
   return (
     <Flex
       as="nav"
@@ -19,7 +21,7 @@ const Header = (props) => {
     >
       <Flex align="center" mr={5}>
         <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
-          Feedback Form
+          theFeedbackForm
         </Heading>
       </Flex>
 

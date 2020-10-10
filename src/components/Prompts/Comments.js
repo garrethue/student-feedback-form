@@ -19,11 +19,7 @@ export default function Feel() {
             Are there any comments you want to leave?
           </Text>
         </Box>
-        <Input
-          isRequired={true}
-          variant="flushed"
-          placeholder="Leave a comment!"
-        />
+        <Input variant="flushed" placeholder="Leave a comment!" />
         <Button marginTop={8} w="25%">
           Next
         </Button>

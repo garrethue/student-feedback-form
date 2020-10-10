@@ -11,8 +11,9 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/core";
 
-export default function Feeling() {
+export default function Understanding() {
   //use GRID for layout design!
+  //use style props to customize CSS
   return (
     <>
       <div>
@@ -27,7 +28,7 @@ export default function Feeling() {
             bg="blue.500"
           >
             <Text fontWeight="bold" fontSize="30px">
-              How are you feeling today?
+              How well are you understanding the content?
             </Text>
           </Box>
           <NumberInput w="50%" defaultValue={1} min={1} max={5}>

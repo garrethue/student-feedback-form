@@ -6,7 +6,11 @@ import customTheme from "../theme";
 import Header from "../Header/Header";
 import Feeling from "../Prompts/Feeling";
 import Comments from "../Prompts/Comments";
+import Understanding from "../Prompts/Understanding";
+import Supported from "../Prompts/Supported";
 
+//use CSSReset so I can customize my CSS
+//wrap ThemeProvider to execute my customTheme
 class App extends Component {
   render() {
     return (
@@ -16,9 +20,9 @@ class App extends Component {
           <div className="App">
             <Header />
             <Feeling />
+            <Understanding />
+            <Supported />
             <Comments />
-
-            <br />
           </div>
         </ColorModeProvider>
       </ThemeProvider>
