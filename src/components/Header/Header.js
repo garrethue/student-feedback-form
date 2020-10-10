@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Flex,
-  Text,
-  useColorMode,
-  Button,
-} from "@chakra-ui/core";
+import { Box, Heading, Flex, useColorMode, Button } from "@chakra-ui/core";
 
 const Header = (props) => {
   const { colorMode, toggleColorMode } = useColorMode();
