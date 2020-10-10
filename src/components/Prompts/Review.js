@@ -1,9 +1,36 @@
 import React from "react";
 import { useToast, Button, Grid, Text, Box } from "@chakra-ui/core";
 import { connect } from "react-redux";
+import axios from "axios";
 
 function Review(props) {
   const toast = useToast(); //upon submission a little window pops up to signal success
+
+  const onSubmit = (event) => {
+    axios
+      .post("feedback/add-feedback", {
+        feeling: props.store.feeling,
+        understanding: props.store.understanding,
+        supported: props.store.supported,
+        comments: props.store.comments,
+      })
+      .then(
+        //add setTimeOut to take them to a NEW PAGE AND RESET STORE!
+        () => {
+          toast({
+            title: "Form submitted.",
+            description:
+              "We have received your feedback. Thank you! In a few seconds, you will be re-directed.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+          props.dispatch({ type: "RESET_STORE" }); //reset store to original default values
+        }
+      )
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <Grid justifyContent="center" alignItems="center" bg="transparent">
@@ -42,20 +69,8 @@ function Review(props) {
           </Text>
         </Box>
 
-        <Button
-          w="25%"
-          onClick={
-            () =>
-              toast({
-                title: "Form submitted.",
-                description: "We have received your feedback. Thank you!",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-              }) //add toast to .then() //add setTimeOut to take them to a NEW PAGE
-          }
-        >
-          Submit Form
+        <Button w="35%" onClick={onSubmit}>
+          Submit Feedback
         </Button>
       </Grid>
     </div>

@@ -11,6 +11,8 @@ import { logger } from "redux-logger";
 const feelingReducer = (state = 0, action) => {
   if (action.type === "UPDATE_FEELINGS") {
     return action.payload;
+  } else if (action.type === "RESET_STORE") {
+    return 0;
   }
   return state;
 };
@@ -18,6 +20,8 @@ const feelingReducer = (state = 0, action) => {
 const understandingReducer = (state = 0, action) => {
   if (action.type === "UPDATE_UNDERSTANDING") {
     return action.payload;
+  } else if (action.type === "RESET_STORE") {
+    return 0;
   }
   return state;
 };
@@ -25,6 +29,8 @@ const understandingReducer = (state = 0, action) => {
 const supportedReducer = (state = 0, action) => {
   if (action.type === "UPDATE_SUPPORTED") {
     return action.payload;
+  } else if (action.type === "RESET_STORE") {
+    return 0;
   }
   return state;
 };
@@ -32,6 +38,8 @@ const supportedReducer = (state = 0, action) => {
 const commentsReducer = (state = "", action) => {
   if (action.type === "UPDATE_COMMENTS") {
     return action.payload;
+  } else if (action.type === "RESET_STORE") {
+    return "";
   }
   return state;
 };
