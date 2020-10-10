@@ -26,7 +26,6 @@ class App extends Component {
           <CSSReset /> {/*remove browser default CSS*/}
           <div className="App">
             <Header />
-            <Admin />
           </div>
           <Router>
             <Switch>
@@ -37,6 +36,7 @@ class App extends Component {
               <Route path="/supported" component={Supported} />
               <Route path="/comments" component={Comments} />
               <Route path="/review" component={Review} />
+              <Route path="/admin" component={Admin} />
             </Switch>
           </Router>
         </ColorModeProvider>

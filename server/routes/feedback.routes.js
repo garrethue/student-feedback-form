@@ -17,4 +17,17 @@ router.post("/add-feedback", async (req, res) => {
   }
 }); //End of POST
 
+// GET Route
+router.get("/", async (req, res) => {
+  try {
+    const allFeedbackData = await pool.query(
+      "SELECT * FROM feedback ORDER BY id"
+    );
+    res.json(allFeedbackData.rows);
+  } catch (err) {
+    res.sendStatus(500);
+    console.error(err.message);
+  }
+}); // END GET Route
+
 module.exports = router;
