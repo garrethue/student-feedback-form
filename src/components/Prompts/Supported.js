@@ -66,7 +66,7 @@ function Supported(props) {
             max={5}
             onChange={(value) => handleChange(value)}
           >
-            <Tooltip label="From 1 (bad) to 5 (great).">
+            <Tooltip showDelay={2000} label="From 1 (bad) to 5 (great).">
               <NumberInputField />
             </Tooltip>
             <NumberInputStepper>
