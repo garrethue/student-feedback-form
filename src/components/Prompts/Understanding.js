@@ -63,27 +63,26 @@ function Understanding(props) {
               How well are you understanding the content?
             </Text>
           </Box>
-
-          <NumberInput
-            w="50%"
-            defaultValue={1}
-            value={understandingValue}
-            min={1}
-            max={5}
-            onChange={(value) => handleChange(value)}
+          <Tooltip
+            placement="left"
+            showDelay={2000}
+            label="From 1 (bad) to 5 (great)."
           >
-            <Tooltip
-              placement="left"
-              showDelay={2000}
-              label="From 1 (bad) to 5 (great)."
+            <NumberInput
+              w="50%"
+              defaultValue={1}
+              value={understandingValue}
+              min={1}
+              max={5}
+              onChange={(value) => handleChange(value)}
             >
               <NumberInputField />
-            </Tooltip>
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Tooltip>
           {/* Button Group allows Buttons to be on the same line */}
           <ButtonGroup spacing={3}>
             <Button

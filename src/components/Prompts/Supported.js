@@ -58,26 +58,27 @@ function Supported(props) {
               How well are you being supported?
             </Text>
           </Box>
-          <NumberInput
-            w="50%"
-            defaultValue={1}
-            value={supportedValue}
-            min={1}
-            max={5}
-            onChange={(value) => handleChange(value)}
+          <Tooltip
+            placement="left"
+            showDelay={2000}
+            label="From 1 (bad) to 5 (great)."
           >
-            <Tooltip
-              placement="left"
-              showDelay={2000}
-              label="From 1 (bad) to 5 (great)."
+            <NumberInput
+              w="50%"
+              defaultValue={1}
+              value={supportedValue}
+              min={1}
+              max={5}
+              onChange={(value) => handleChange(value)}
             >
               <NumberInputField />
-            </Tooltip>
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
+
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Tooltip>
           <ButtonGroup spacing={3}>
             <Button
               isDisabled={isDisabledValue}

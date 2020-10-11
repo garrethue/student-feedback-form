@@ -52,25 +52,25 @@ function Feeling(props) {
             How are you feeling today?
           </Text>
         </Box>
-        <NumberInput
-          w="50%"
-          value={feelingValue}
-          min={1}
-          max={5}
-          onChange={(value) => handleChange(value)}
+        <Tooltip
+          placement="left"
+          showDelay={2000}
+          label="From 1 (bad) to 5 (great)."
         >
-          <Tooltip
-            placement="left"
-            showDelay={2000}
-            label="From 1 (bad) to 5 (great)."
+          <NumberInput
+            w="50%"
+            value={feelingValue}
+            min={1}
+            max={5}
+            onChange={(value) => handleChange(value)}
           >
             <NumberInputField />
-          </Tooltip>
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Tooltip>
 
         <Button
           isDisabled={isDisabledValue}
