@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Heading, Flex, useColorMode, Button } from "@chakra-ui/core";
+import {
+  Box,
+  Heading,
+  Flex,
+  useColorMode,
+  Icon,
+  Button,
+} from "@chakra-ui/core";
 
 const Header = (props) => {
   // useColorMode to bring in Darkmode feature
@@ -48,8 +55,14 @@ const Header = (props) => {
         display={{ sm: show ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        <Button onClick={toggleColorMode} bg="transparent" border="1px">
-          {colorMode === "light" ? "Dark mode" : "Light mode"}
+        <Button
+          h={45}
+          w={50}
+          onClick={toggleColorMode}
+          bg="transparent"
+          border="1px"
+        >
+          {colorMode === "light" ? <Icon name="moon" /> : <Icon name="sun" />}
         </Button>
       </Box>
     </Flex>
