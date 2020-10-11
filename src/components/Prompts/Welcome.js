@@ -20,11 +20,11 @@ function Welcome(props) {
           bg="blue.500"
         >
           <Text fontWeight="bold" fontSize="50px">
-            Welcome to theFeedbackForm!
+            Welcome to theFeedbackForm.
           </Text>
         </Box>
         <Button onClick={nextPage} w="25%">
-          Let's Get Started!
+          Let's Get Started.
         </Button>
       </Grid>
     </div>
