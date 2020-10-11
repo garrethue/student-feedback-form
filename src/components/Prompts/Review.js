@@ -1,5 +1,12 @@
 import React from "react";
-import { useToast, Button, Grid, Text, Box } from "@chakra-ui/core";
+import {
+  useToast,
+  Button,
+  Grid,
+  Text,
+  Box,
+  ButtonGroup,
+} from "@chakra-ui/core";
 import { connect } from "react-redux";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
@@ -31,6 +38,10 @@ function Review(props) {
         }
       )
       .catch((err) => console.log(err));
+  };
+
+  const goBackToPrevPage = () => {
+    props.history.push("/comments");
   };
 
   return (
@@ -71,10 +82,14 @@ function Review(props) {
             Comments: {props.store.comments}
           </Text>
         </Box>
-
-        <Button w="35%" onClick={onSubmit}>
-          Submit Feedback
-        </Button>
+        <ButtonGroup spacing={3}>
+          <Button onClick={goBackToPrevPage} marginTop={3} w="20%">
+            Back
+          </Button>
+          <Button onClick={onSubmit} marginTop={3} w="35%">
+            Submit Feedback
+          </Button>
+        </ButtonGroup>
       </Grid>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Input, Text, Button } from "@chakra-ui/core";
+import { Box, Grid, Input, Text, Button, ButtonGroup } from "@chakra-ui/core";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -9,6 +9,9 @@ function Comments(props) {
     props.dispatch({ type: "UPDATE_COMMENTS", payload: commentValue });
     setCommentValue("");
     props.history.push("/review");
+  };
+  const goBackToPrevPage = () => {
+    props.history.push("/supported");
   };
 
   //use GRID for layout!
@@ -32,11 +35,16 @@ function Comments(props) {
           value={commentValue}
           onChange={(event) => setCommentValue(event.target.value)}
           variant="flushed"
-          placeholder="Leave a comment!"
+          placeholder="Write comment here."
         />
-        <Button onClick={addCommentAndGoToNextPage} marginTop={8} w="25%">
-          Next
-        </Button>
+        <ButtonGroup spacing={3}>
+          <Button onClick={goBackToPrevPage} marginTop={3} w="20%">
+            Back
+          </Button>
+          <Button onClick={addCommentAndGoToNextPage} marginTop={3} w="20%">
+            Next
+          </Button>
+        </ButtonGroup>
       </Grid>
     </div>
   );
