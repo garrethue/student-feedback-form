@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-//POST
+//POST Route
 router.post("/add-feedback", async (req, res) => {
   try {
     const { feeling, understanding, supported, comments } = req.body;
@@ -33,7 +33,6 @@ router.get("/", async (req, res) => {
 //DELETE Route
 router.delete("/delete-row-entry/:id", async (req, res) => {
   try {
-    console.log("in delete!");
     const { id } = req.params;
     const deleteTodo = await pool.query("DELETE FROM feedback WHERE id=$1", [
       id,
@@ -44,5 +43,22 @@ router.delete("/delete-row-entry/:id", async (req, res) => {
     console.log(err.message);
   }
 }); //END DELETE Route
+
+//PUT Route
+router.put("/update-flagged/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { flagged } = req.body;
+    flagged = !flagged; //toggle bool
+    const updateTodo = await pool.query(
+      "UPDATE feedback SET flagged = $1 WHERE id = $2",
+      [flagged, id]
+    );
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+    console.log(err.message);
+  }
+}); //END PUT Route
 
 module.exports = router;

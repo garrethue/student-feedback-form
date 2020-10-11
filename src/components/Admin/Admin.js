@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Admin.css";
-import { Grid, Box, IconButton, Text } from "@chakra-ui/core";
+import { Grid, Box, Text, Button } from "@chakra-ui/core";
 import axios from "axios";
 
 export default function Admin() {
@@ -18,9 +18,15 @@ export default function Admin() {
   };
 
   const handleDelete = (id) => {
-    console.log("in delete handler", id);
     axios
       .delete(`feedback/delete-row-entry/${id}`)
+      .then(() => getData())
+      .catch((err) => console.log(err));
+  };
+
+  const handleUpdate = (id, flagged) => {
+    axios
+      .put(`feedback/update-flagged/${id}`, { flagged })
       .then(() => getData())
       .catch((err) => console.log(err));
   };
@@ -64,19 +70,36 @@ export default function Admin() {
                   <td>{dataObj.support}</td>
                   <td>{dataObj.comments}</td>
                   <td>
-                    <IconButton
+                    <Button
+                      size="sm"
                       onClick={() => handleDelete(dataObj.id)}
                       variantColor="red"
-                      aria-label="Delete Entry"
-                      icon="delete"
-                    />
+                    >
+                      Delete
+                    </Button>
                   </td>
                   <td>
-                    <IconButton
-                      variantColor="red"
-                      aria-label="Flag Entry"
-                      icon="warning-2"
-                    />
+                    {!dataObj.flagged ? (
+                      <Button
+                        size="sm"
+                        variantColor="red"
+                        onClick={() =>
+                          handleUpdate(dataObj.id, dataObj.flagged)
+                        }
+                      >
+                        Flag
+                      </Button>
+                    ) : (
+                      <Button
+                        size="sm"
+                        variantColor="yellow"
+                        onClick={() =>
+                          handleUpdate(dataObj.id, dataObj.flagged)
+                        }
+                      >
+                        Unflag
+                      </Button>
+                    )}
                   </td>
                 </tr>
               );
