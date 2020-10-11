@@ -31,7 +31,7 @@ function Review(props) {
               "We have received your feedback. Thank you! In a few seconds, you will be re-directed.",
             status: "success",
             duration: 4000, //pop up lasts for 4 sec
-            isClosable: false,
+            isClosable: true,
           });
           setTimeout(() => props.dispatch({ type: "RESET_STORE" }), 4500); //reset store to original default values. setTimeOut is needed so the review back doesn't show this
           setTimeout(() => props.history.push("/"), 4000); //go to welcome page after 5 sec
