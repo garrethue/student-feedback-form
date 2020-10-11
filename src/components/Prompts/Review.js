@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useToast,
   Button,
@@ -13,6 +13,7 @@ import { withRouter } from "react-router-dom";
 
 function Review(props) {
   const toast = useToast(); //upon submission a little window pops up to signal success
+  const [isDisabledValue, setIsDisabled] = useState(false);
 
   const onSubmit = (event) => {
     axios
@@ -25,16 +26,17 @@ function Review(props) {
       .then(
         //add setTimeOut to take them to a NEW PAGE AND RESET STORE!
         () => {
+          setIsDisabled(true); //prevent user from nav'ing if user submits
           toast({
             title: "Form submitted.",
             description:
               "We have received your feedback. Thank you! In a few seconds, you will be re-directed.",
             status: "success",
-            duration: 4000, //pop up lasts for 4 sec
+            duration: 3500, //pop up lasts for 3.5 sec
             isClosable: true,
           });
-          setTimeout(() => props.dispatch({ type: "RESET_STORE" }), 4500); //reset store to original default values. setTimeOut is needed so the review back doesn't show this
-          setTimeout(() => props.history.push("/"), 4000); //go to welcome page after 5 sec
+          setTimeout(() => props.dispatch({ type: "RESET_STORE" }), 3600); //reset store to original default values. setTimeOut is needed so the review back doesn't show this
+          setTimeout(() => props.history.push("/"), 3500); //go to welcome page after 3.5 sec
         }
       )
       .catch((err) => console.log(err));
@@ -83,10 +85,20 @@ function Review(props) {
           </Text>
         </Box>
         <ButtonGroup spacing={3}>
-          <Button onClick={goBackToPrevPage} marginTop={3} w="20%">
+          <Button
+            isDisabled={isDisabledValue}
+            onClick={goBackToPrevPage}
+            marginTop={3}
+            w="20%"
+          >
             Back
           </Button>
-          <Button onClick={onSubmit} marginTop={3} w="35%">
+          <Button
+            isDisabled={isDisabledValue}
+            onClick={onSubmit}
+            marginTop={3}
+            w="35%"
+          >
             Submit Feedback
           </Button>
         </ButtonGroup>

@@ -10,6 +10,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   ButtonGroup,
+  Tooltip,
 } from "@chakra-ui/core";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -62,6 +63,7 @@ function Understanding(props) {
               How well are you understanding the content?
             </Text>
           </Box>
+
           <NumberInput
             w="50%"
             defaultValue={1}
@@ -70,7 +72,9 @@ function Understanding(props) {
             max={5}
             onChange={(value) => handleChange(value)}
           >
-            <NumberInputField />
+            <Tooltip label="From 1 (bad) to 5 (great).">
+              <NumberInputField />
+            </Tooltip>
             <NumberInputStepper>
               <NumberIncrementStepper />
               <NumberDecrementStepper />
