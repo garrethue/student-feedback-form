@@ -26,8 +26,23 @@ router.get("/", async (req, res) => {
     res.json(allFeedbackData.rows);
   } catch (err) {
     res.sendStatus(500);
-    console.error(err.message);
+    console.log(err.message);
   }
-}); // END GET Route
+}); //END GET Route
+
+//DELETE Route
+router.delete("/delete-row-entry/:id", async (req, res) => {
+  try {
+    console.log("in delete!");
+    const { id } = req.params;
+    const deleteTodo = await pool.query("DELETE FROM feedback WHERE id=$1", [
+      id,
+    ]);
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+    console.log(err.message);
+  }
+}); //END DELETE Route
 
 module.exports = router;

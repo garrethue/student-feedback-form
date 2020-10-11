@@ -17,6 +17,14 @@ export default function Admin() {
       .catch((err) => console.log(err));
   };
 
+  const handleDelete = (id) => {
+    console.log("in delete handler", id);
+    axios
+      .delete(`feedback/delete-row-entry/${id}`)
+      .then(() => getData())
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     //useEffect makes a fetch request to a restful api every time the component is rendered
     getData();
@@ -50,13 +58,14 @@ export default function Admin() {
             </tr>
             {feedbackData.map((dataObj) => {
               return (
-                <tr>
+                <tr key={dataObj.id}>
                   <td>{dataObj.feeling}</td>
                   <td>{dataObj.understanding}</td>
                   <td>{dataObj.support}</td>
                   <td>{dataObj.comments}</td>
                   <td>
                     <IconButton
+                      onClick={() => handleDelete(dataObj.id)}
                       variantColor="red"
                       aria-label="Delete Entry"
                       icon="delete"
