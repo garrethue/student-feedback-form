@@ -17,9 +17,9 @@ function Comments(props) {
   //use GRID for layout!
   return (
     <div>
-      <br />
       <Grid justifyContent="center" alignItems="center" bg="transparent">
         <Box
+          marginTop={3}
           marginBottom={2}
           rounded={3}
           paddingLeft={2}
