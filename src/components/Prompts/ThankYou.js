@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Grid, Text, Box } from "@chakra-ui/core";
 import { withRouter } from "react-router-dom";
 
-function Welcome(props) {
+function ThankYou(props) {
   const nextPage = () => {
-    props.history.push("/feeling");
+    props.history.push("/");
   };
 
   return (
@@ -20,14 +20,14 @@ function Welcome(props) {
           bg="blue.500"
         >
           <Text fontWeight="bold" fontSize="50px">
-            Welcome to theFeedbackForm!
+            Thanks for your submission!
           </Text>
         </Box>
         <Button onClick={nextPage} w="25%">
-          Let's Get Started!
+          Back to Home.
         </Button>
       </Grid>
     </div>
   );
 }
-export default withRouter(Welcome);
+export default withRouter(ThankYou);

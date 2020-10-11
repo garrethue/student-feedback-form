@@ -16,6 +16,7 @@ import Supported from "../Prompts/Supported";
 import Review from "../Prompts/Review";
 import Welcome from "../Prompts/Welcome";
 import Admin from "../Admin/Admin";
+import ThankYou from "../Prompts/ThankYou";
 
 //wrap ThemeProvider to execute my customTheme
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
               <Route path="/comments" component={Comments} />
               <Route path="/review" component={Review} />
               <Route path="/admin" component={Admin} />
+              <Route path="/thankyou" component={ThankYou} />
             </Switch>
           </Router>
         </ColorModeProvider>

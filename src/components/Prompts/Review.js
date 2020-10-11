@@ -36,7 +36,7 @@ function Review(props) {
             isClosable: true,
           });
           setTimeout(() => props.dispatch({ type: "RESET_STORE" }), 3600); //reset store to original default values. setTimeOut is needed so the review back doesn't show this
-          setTimeout(() => props.history.push("/"), 3500); //go to welcome page after 3.5 sec
+          setTimeout(() => props.history.push("/thankyou"), 3500); //go to welcome page after 3.5 sec
         }
       )
       .catch((err) => console.log(err));
