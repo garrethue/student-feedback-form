@@ -38,7 +38,7 @@ export default function Admin() {
             All Submitted Feedback:
           </Text>
         </Box>
-        <Box marginTop={3} marginBottom={3} rounded={3} w="100%" bg="blue.500">
+        <Box marginBottom={3} rounded={3} w="100%" bg="blue.500">
           <table>
             <tr>
               <th>Feeling</th>

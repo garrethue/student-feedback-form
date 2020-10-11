@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 function Supported(props) {
-  const [supportedValue, setSupportedValue] = useState(1);
+  const [supportedValue, setSupportedValue] = useState(props.supported);
   const [isDisabledValue, setIsDisabled] = useState(false);
 
   const handleChange = (value) => {
@@ -95,4 +95,7 @@ function Supported(props) {
   );
 }
 
-export default connect()(withRouter(Supported));
+//bring in the feelings
+const mapSupportedStateToProps = ({ supported }) => ({ supported });
+
+export default connect(mapSupportedStateToProps)(withRouter(Supported));

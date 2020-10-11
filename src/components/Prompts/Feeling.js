@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 function Feeling(props) {
-  const [feelingValue, setFeelingValue] = useState(1);
+  const [feelingValue, setFeelingValue] = useState(props.feeling); //props.feeling will be the default value upon each rendering
   const [isDisabledValue, setIsDisabled] = useState(false);
 
   const handleChange = (value) => {
@@ -54,7 +54,6 @@ function Feeling(props) {
           </Box>
           <NumberInput
             w="50%"
-            defaultValue={1}
             value={feelingValue}
             min={1}
             max={5}
@@ -81,4 +80,7 @@ function Feeling(props) {
   );
 }
 
-export default connect()(withRouter(Feeling));
+//bring in the feelings
+const mapFeelingStateToProps = ({ feeling }) => ({ feeling });
+
+export default connect(mapFeelingStateToProps)(withRouter(Feeling));

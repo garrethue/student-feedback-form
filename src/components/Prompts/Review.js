@@ -33,8 +33,8 @@ function Review(props) {
             duration: 4000, //pop up lasts for 4 sec
             isClosable: false,
           });
-          props.dispatch({ type: "RESET_STORE" }); //reset store to original default values
-          setTimeout(() => props.history.push("/"), 5000); //go to welcome page after 5 sec
+          setTimeout(() => props.dispatch({ type: "RESET_STORE" }), 4500); //reset store to original default values. setTimeOut is needed so the review back doesn't show this
+          setTimeout(() => props.history.push("/"), 4000); //go to welcome page after 5 sec
         }
       )
       .catch((err) => console.log(err));

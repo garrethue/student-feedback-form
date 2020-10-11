@@ -15,7 +15,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 function Understanding(props) {
-  const [understandingValue, setUnderstandingValue] = useState(1);
+  const [understandingValue, setUnderstandingValue] = useState(
+    props.understanding
+  ); // always initially render what understanding is in the store
   const [isDisabledValue, setIsDisabled] = useState(false);
 
   const handleChange = (value) => {
@@ -74,6 +76,7 @@ function Understanding(props) {
               <NumberDecrementStepper />
             </NumberInputStepper>
           </NumberInput>
+          {/* Button Group allows Buttons to be on the same line */}
           <ButtonGroup spacing={3}>
             <Button
               isDisabled={isDisabledValue}
@@ -98,4 +101,7 @@ function Understanding(props) {
   );
 }
 
-export default connect()(withRouter(Understanding));
+//bring in the feelings
+const mapUnderstandingStateToProps = ({ understanding }) => ({ understanding });
+
+export default connect(mapUnderstandingStateToProps)(withRouter(Understanding));

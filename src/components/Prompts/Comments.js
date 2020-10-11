@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 function Comments(props) {
-  const [commentValue, setCommentValue] = useState("");
+  const [commentValue, setCommentValue] = useState(props.comments);
   const addCommentAndGoToNextPage = () => {
     props.dispatch({ type: "UPDATE_COMMENTS", payload: commentValue });
     setCommentValue("");
@@ -49,4 +49,8 @@ function Comments(props) {
     </div>
   );
 }
-export default connect()(withRouter(Comments));
+
+//bring in the feelings
+const mapCommentsStateToProps = ({ comments }) => ({ comments });
+
+export default connect(mapCommentsStateToProps)(withRouter(Comments));
