@@ -1,6 +1,8 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Grid, Box, Text, Button } from "@chakra-ui/core";
+import React, { useState, useEffect } from "react";
+import { Grid, Box, Text } from "@chakra-ui/core";
 import axios from "axios";
+import TableData from "./AdminComponents/TableData";
+import TableHeaders from "./AdminComponents/TableHeaders";
 
 export default function Admin() {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -60,146 +62,12 @@ export default function Admin() {
             templateColumns="repeat(6, 1fr)"
             gap={4}
           >
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Feeling
-            </Box>
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Comprehension
-            </Box>
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Support
-            </Box>
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Comments
-            </Box>
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Delete
-            </Box>
-            <Box
-              fontWeight="bold"
-              textAlign="center"
-              padding={1}
-              fontSize="20px"
-              w="100%"
-              h="10"
-              bg="blue.800"
-            >
-              Flag
-            </Box>
-            {feedbackData.map((dataObj) => {
-              return (
-                <Fragment key={dataObj.id}>
-                  <Box
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                    fontSize="1.5em"
-                  >
-                    {dataObj.feeling}
-                  </Box>
-                  <Box
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                    fontSize="1.5em"
-                  >
-                    {dataObj.understanding}
-                  </Box>
-                  <Box
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                    fontSize="1.5em"
-                  >
-                    {dataObj.support}
-                  </Box>
-                  <Box
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                    fontSize="1.5em"
-                  >
-                    {dataObj.comments}
-                  </Box>
-                  <Box textAlign="center" padding={1} w="100%" h="10">
-                    <Button
-                      size="sm"
-                      onClick={() => handleDelete(dataObj.id)}
-                      variantColor="red"
-                    >
-                      Delete
-                    </Button>
-                  </Box>
-                  <Box textAlign="center" padding={1} w="100%" h="10">
-                    {!dataObj.flagged ? (
-                      <Button
-                        size="sm"
-                        variantColor="red"
-                        onClick={() =>
-                          handleUpdate(dataObj.id, dataObj.flagged)
-                        }
-                      >
-                        Flag
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        variantColor="yellow"
-                        onClick={() =>
-                          handleUpdate(dataObj.id, dataObj.flagged)
-                        }
-                      >
-                        Unflag
-                      </Button>
-                    )}
-                  </Box>
-                </Fragment>
-              );
-            })}
+            <TableHeaders />
+            <TableData
+              handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+              feedbackData={feedbackData}
+            />
           </Grid>
         </Box>
       </Grid>

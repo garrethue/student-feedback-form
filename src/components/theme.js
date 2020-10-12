@@ -1,6 +1,6 @@
 import { theme } from "@chakra-ui/core";
 
-// Let's say you want to add custom colors
+// add custom colors
 export default (customTheme) => ({
   ...theme,
   colors: {

@@ -30,7 +30,6 @@ class App extends Component {
           </div>
           <Router>
             <Switch>
-              {/* NEED A WELCOME PAGE????*/}
               <Route exact path="/" component={Welcome} />
               <Route path="/feeling" component={Feeling} />
               <Route path="/understanding" component={Understanding} />
