@@ -39,10 +39,14 @@ export default function Admin() {
 
   return (
     <div>
-      <Grid justifyContent="center" alignItems="center" bg="transparent">
+      <Grid
+        margin={3}
+        justifyContent="center"
+        alignItems="center"
+        bg="transparent"
+      >
         <Box
-          marginBottom={3}
-          marginTop={3}
+          marginBottom={5}
           rounded={3}
           paddingLeft={2}
           paddingRight={2}
