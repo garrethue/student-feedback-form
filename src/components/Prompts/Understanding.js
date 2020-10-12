@@ -108,7 +108,7 @@ function Understanding(props) {
   );
 }
 
-//bring in the feelings
+//bring in the understanding
 const mapUnderstandingStateToProps = ({ understanding }) => ({ understanding });
 
 export default connect(mapUnderstandingStateToProps)(withRouter(Understanding));

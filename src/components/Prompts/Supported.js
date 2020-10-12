@@ -72,7 +72,6 @@ function Supported(props) {
               onChange={(value) => handleChange(value)}
             >
               <NumberInputField />
-
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />
@@ -103,7 +102,7 @@ function Supported(props) {
   );
 }
 
-//bring in the feelings
+//bring in the support
 const mapSupportedStateToProps = ({ supported }) => ({ supported });
 
 export default connect(mapSupportedStateToProps)(withRouter(Supported));
