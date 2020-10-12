@@ -6,7 +6,7 @@ theFeedbackForm is a simple form that allows users to give feedback to an organi
 
 ## Deployed Version
 
-To see a deployed version of the app, visit [this link](https://mighty-badlands-71531.herokuapp.com/)
+To see a deployed version of the app, visit [this link](https://limitless-plains-89040.herokuapp.com)
 
 ## Installation
 
