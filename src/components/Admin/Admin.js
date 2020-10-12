@@ -58,7 +58,7 @@ export default function Admin() {
             justifyContent="center"
             alignItems="center"
             templateColumns="repeat(6, 1fr)"
-            gap={6}
+            gap={4}
           >
             <Box
               fontWeight="bold"
@@ -217,59 +217,6 @@ export default function Admin() {
               );
             })}
           </Grid>
-
-          {/* <table>
-              <tr>
-                <th>Feeling</th>
-                <th>Comprehension</th>
-                <th>Support</th>
-                <th>Comments</th>
-                <th>Delete</th>
-                <th>Flag</th>
-              </tr>
-              {feedbackData.map((dataObj) => {
-                return (
-                  <tr key={dataObj.id}>
-                    <td>{dataObj.feeling}</td>
-                    <td>{dataObj.understanding}</td>
-                    <td>{dataObj.support}</td>
-                    <td>{dataObj.comments}</td>
-                    <td>
-                      <Button
-                        size="sm"
-                        onClick={() => handleDelete(dataObj.id)}
-                        variantColor="red"
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                    <td>
-                      {!dataObj.flagged ? (
-                        <Button
-                          size="sm"
-                          variantColor="red"
-                          onClick={() =>
-                            handleUpdate(dataObj.id, dataObj.flagged)
-                          }
-                        >
-                          Flag
-                        </Button>
-                      ) : (
-                        <Button
-                          size="sm"
-                          variantColor="yellow"
-                          onClick={() =>
-                            handleUpdate(dataObj.id, dataObj.flagged)
-                          }
-                        >
-                          Unflag
-                        </Button>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </table> */}
         </Box>
       </Grid>
     </div>
