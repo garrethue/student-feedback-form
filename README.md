@@ -35,7 +35,7 @@ Admin are able to view all data by visiting the /admin (relative) URL. Admin are
 
 ## Technologies
 
-PostgreSQL, PG, Pool, Cors, Express, Node, React, Chakra-UI
+PostgreSQL, PG, Pool, Cors, Express, Node, React, Redux, Chakra-UI
 
 ## Screenshots
 
