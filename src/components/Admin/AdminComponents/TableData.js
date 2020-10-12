@@ -38,7 +38,7 @@ export default function TableData(props) {
               textAlign="center"
               padding={1}
               w="100%"
-              h="10"
+              h="100%"
               fontSize="1.5em"
             >
               {dataObj.comments}
