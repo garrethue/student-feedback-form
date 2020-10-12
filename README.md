@@ -2,7 +2,7 @@
 
 _Duration: 2 day_
 
-theFeedbackForm is a simple form that allows users to give feedback to an organization. Admin are able to view all of the data by visiting a 'secret' URL.
+theFeedbackForm is a simple form that allows users to give feedback to an organization. Admin are able to view/delete/flag the data.
 
 ## Deployed Version
 
