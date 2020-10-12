@@ -39,8 +39,6 @@ PostgreSQL, PG, Pool, Cors, Express, Node, React, Chakra-UI
 
 ## Screenshots
 
-### Base Version:
-
 #### Welcome Page:
 
 ![image](https://github.com/garrethue/redux-feedback-loop/blob/master/public/images/welcome.png)
