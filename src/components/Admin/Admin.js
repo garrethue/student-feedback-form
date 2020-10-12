@@ -131,7 +131,6 @@ export default function Admin() {
                 <Fragment key={dataObj.id}>
                   <Box
                     textAlign="center"
-                    textAlign="center"
                     padding={1}
                     w="100%"
                     h="10"
@@ -140,7 +139,6 @@ export default function Admin() {
                     {dataObj.feeling}
                   </Box>
                   <Box
-                    textAlign="center"
                     textAlign="center"
                     padding={1}
                     w="100%"
@@ -151,7 +149,6 @@ export default function Admin() {
                   </Box>
                   <Box
                     textAlign="center"
-                    textAlign="center"
                     padding={1}
                     w="100%"
                     h="10"
@@ -161,7 +158,6 @@ export default function Admin() {
                   </Box>
                   <Box
                     textAlign="center"
-                    textAlign="center"
                     padding={1}
                     w="100%"
                     h="10"
@@ -169,13 +165,7 @@ export default function Admin() {
                   >
                     {dataObj.comments}
                   </Box>
-                  <Box
-                    textAlign="center"
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                  >
+                  <Box textAlign="center" padding={1} w="100%" h="10">
                     <Button
                       size="sm"
                       onClick={() => handleDelete(dataObj.id)}
@@ -184,13 +174,7 @@ export default function Admin() {
                       Delete
                     </Button>
                   </Box>
-                  <Box
-                    textAlign="center"
-                    textAlign="center"
-                    padding={1}
-                    w="100%"
-                    h="10"
-                  >
+                  <Box textAlign="center" padding={1} w="100%" h="10">
                     {!dataObj.flagged ? (
                       <Button
                         size="sm"
