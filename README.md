@@ -16,7 +16,7 @@ Fork and clone the repository to your computer. Use npm to install the dependenc
 npm install
 ```
 
-Create a database following the instructions in database.sql.
+Create a database following the instructions in data.sql.
 
 Start the server and client server by running the scripts.
 
